@@ -8,7 +8,9 @@ const expressServer = http.createServer(app);
 const io = new Server(expressServer);
 
 io.on("connection", (socket) => {
-  console.log("New User Connected");
+  socket.on("chat", (msg) => {
+    io.emit("chat_transfer", msg);
+  });
 });
 
 app.get("/", (req, res) => {
