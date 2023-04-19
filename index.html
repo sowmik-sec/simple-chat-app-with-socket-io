@@ -13,7 +13,16 @@
     />
   </head>
   <body>
-    <div class="container">
+    <h1 id="msg"></h1>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+      socket.on("cooking", (data) => {
+        document.getElementById("msg").innerHTML = data;
+      });
+    </script>
+
+    <!-- <div class="container">
       <div class="row d-flex justify-content-center">
         <div class="col-md-6 col-12 col-lg-6">
           <ul id="msgHistory"></ul>
@@ -44,6 +53,6 @@
         const msgHis = document.getElementById("msgHistory");
         msgHis.appendChild(li);
       });
-    </script>
+    </script> -->
   </body>
 </html>
